@@ -68,6 +68,8 @@ class CatsTableViewController: PFQueryTableViewController {
             cell = NSBundle.mainBundle().loadNibNamed("CatsTableViewCell", owner: self, options: nil)[0] as? CatsTableViewCell
         }
 
+        cell?.parseObject = object
+
         if let pfObject = object {
             cell?.catNameLabel?.text = pfObject["name"] as? String
 
