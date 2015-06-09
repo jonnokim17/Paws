@@ -6,9 +6,13 @@
 //  Copyright (c) 2015 Jonathan Kim. All rights reserved.
 //
 
+//Source: http://www.appcoda.com/instagram-app-parse-swift/
+
 import UIKit
 
 class CatsTableViewController: PFQueryTableViewController {
+
+    let cellIdentifier: String = "CatCell"
 
     override init(style: UITableViewStyle, className: String!) {
         super.init(style: style, className: className);
@@ -18,6 +22,9 @@ class CatsTableViewController: PFQueryTableViewController {
         self.objectsPerPage = 25
 
         self.parseClassName = className
+
+        self.tableView.rowHeight = 350
+        self.tableView.allowsSelection = false
     }
 
     required init!(coder aDecoder: NSCoder) {
@@ -25,6 +32,9 @@ class CatsTableViewController: PFQueryTableViewController {
     }
 
     override func viewDidLoad() {
+
+        tableView.registerNib(UINib(nibName: "CatsTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -51,16 +61,44 @@ class CatsTableViewController: PFQueryTableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
-        let cellIdentifier: String = "Cell"
 
-        var cell: PFTableViewCell? = tableView.dequeueReusableCellWithIdentifier("Cell") as? PFTableViewCell
+        var cell: CatsTableViewCell? = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? CatsTableViewCell
 
         if (cell == nil) {
-            cell = PFTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellIdentifier)
+            cell = NSBundle.mainBundle().loadNibNamed("CatsTableViewCell", owner: self, options: nil)[0] as? CatsTableViewCell
         }
 
         if let pfObject = object {
-            cell?.textLabel?.text = pfObject["name"] as? String
+            cell?.catNameLabel?.text = pfObject["name"] as? String
+
+            var votes: Int? = pfObject["votes"] as? Int
+            if votes == nil {
+                votes = 0
+            }
+            cell?.catVotesLabel?.text = "\(votes!) votes"
+
+            var credit: String? = pfObject["cc_by"] as? String
+            if credit != nil {
+                cell?.catCreditLabel?.text = "\(credit!) / CC 2.0"
+            }
+
+            // download image from parse
+            cell?.catImageView?.image = nil
+
+            if var urlString: String? = pfObject["url"] as? String {
+                var url: NSURL? = NSURL(string: urlString!)
+
+                if var url: NSURL? = NSURL(string: urlString!) {
+                    var error: NSError?
+                    var request: NSURLRequest = NSURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.ReturnCacheDataElseLoad, timeoutInterval: 5.0)
+
+                    NSOperationQueue.mainQueue().cancelAllOperations()
+
+                    NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: { (response: NSURLResponse!, imageData: NSData!, error: NSError!) -> Void in
+                        cell?.catImageView?.image = UIImage(data: imageData)
+                    })
+                }
+            }
         }
 
         return cell

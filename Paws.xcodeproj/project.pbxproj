@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9019776E1B272C9F007A9160 /* CatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9019776C1B272C9F007A9160 /* CatsTableViewCell.swift */; };
+		9019776F1B272C9F007A9160 /* CatsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9019776D1B272C9F007A9160 /* CatsTableViewCell.xib */; };
 		903A97821B2670F70089A7E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903A97811B2670F70089A7E8 /* AppDelegate.swift */; };
 		903A97841B2670F70089A7E8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903A97831B2670F70089A7E8 /* ViewController.swift */; };
 		903A97871B2670F70089A7E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 903A97851B2670F70089A7E8 /* Main.storyboard */; };
@@ -29,6 +31,8 @@
 
 /* Begin PBXFileReference section */
 		14662CEC7E98BC63D53BD265 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		9019776C1B272C9F007A9160 /* CatsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatsTableViewCell.swift; sourceTree = "<group>"; };
+		9019776D1B272C9F007A9160 /* CatsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CatsTableViewCell.xib; sourceTree = "<group>"; };
 		903A977C1B2670F70089A7E8 /* Paws.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Paws.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		903A97801B2670F70089A7E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		903A97811B2670F70089A7E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -107,11 +111,13 @@
 			children = (
 				903A97811B2670F70089A7E8 /* AppDelegate.swift */,
 				903A97831B2670F70089A7E8 /* ViewController.swift */,
+				908E8DEE1B2676BB008813E7 /* CatsTableViewController.swift */,
+				9019776C1B272C9F007A9160 /* CatsTableViewCell.swift */,
+				9019776D1B272C9F007A9160 /* CatsTableViewCell.xib */,
 				903A97851B2670F70089A7E8 /* Main.storyboard */,
 				903A97881B2670F70089A7E8 /* Images.xcassets */,
 				903A978A1B2670F70089A7E8 /* LaunchScreen.xib */,
 				903A977F1B2670F70089A7E8 /* Supporting Files */,
-				908E8DEE1B2676BB008813E7 /* CatsTableViewController.swift */,
 			);
 			path = Paws;
 			sourceTree = "<group>";
@@ -187,6 +193,7 @@
 		903A97741B2670F70089A7E8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Jonathan Kim";
 				TargetAttributes = {
@@ -223,6 +230,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9019776F1B272C9F007A9160 /* CatsTableViewCell.xib in Resources */,
 				903A97871B2670F70089A7E8 /* Main.storyboard in Resources */,
 				903A978C1B2670F70089A7E8 /* LaunchScreen.xib in Resources */,
 				903A97891B2670F70089A7E8 /* Images.xcassets in Resources */,
@@ -276,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9019776E1B272C9F007A9160 /* CatsTableViewCell.swift in Sources */,
 				903A97841B2670F70089A7E8 /* ViewController.swift in Sources */,
 				908E8DEF1B2676BB008813E7 /* CatsTableViewController.swift in Sources */,
 				903A97821B2670F70089A7E8 /* AppDelegate.swift in Sources */,
